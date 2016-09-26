@@ -1,0 +1,1430 @@
+<html style="height: 100%;"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>How to fix application and don't corrupt the code</title>
+
+<meta name="description" content="TODO">
+<meta name="author" content="TODO">
+
+<style>
+.componentContainer {
+    position: absolute;
+    line-height: normal;
+    /*-webkit-transform-origin: 135% 135%;
+    -moz-transform-origin: 135% 135%;
+    transform-origin: 135% 135%;*/
+}
+
+.transformContainer {
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+.bg {
+    width: 100%;
+    height: 100%;
+}
+
+.step .notes {
+  display: none;
+}
+
+</style>
+
+<link rel="stylesheet" href="assets/default-reset.css">
+<link href="assets/main.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="assets/default.css" id="theme">
+<link href="assets/web-fonts.css" rel="stylesheet" type="text/css">
+<link href="assets/backgroundClasses.css" rel="stylesheet" type="text/css">
+<link href="assets/surfaceClasses.css" rel="stylesheet" type="text/css">
+
+
+<link rel="shortcut icon" href="http://strut.io/editor/preview_export/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="http://strut.io/editor/preview_export/apple-touch-icon.png" type="image/png">
+
+<style>
+.reveal.themedArea {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+
+<script src="assets/analytics.js" async=""></script>
+<script type="text/javascript" src="assets/dataset-shim.js"></script>
+<script type="text/javascript" src="assets/impress.js"></script>
+<script type="text/javascript" src="js/impressConsole.js"></script>
+
+<script src="assets/onready.js"></script>
+<script src="assets/loadPresentation.js"></script>
+<script>
+ready(function() {
+    if (document.getElementById('launched-placeholder'))
+        loadPresentation();
+
+    if (!window.presStarted) {
+        startPres(document, window);
+        impress().init();
+        impressConsole().init();
+        impressConsole().open();
+    }
+
+    if ("ontouchstart" in document.documentElement) {
+        document.querySelector(".hint").innerHTML =
+            "<p>Tap on the left or right to navigate</p>";
+    }
+
+
+});
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42322531-1', 'strut.io');
+    ga('send', 'pageview');
+    </script>
+</head>
+<body style="height: 100%; overflow: hidden;" class="impress-supported impress-enabled">
+<style type="text/css">
+
+</style>
+<style>
+
+</style>
+<style>
+
+
+
+
+
+		.strut-surface > .strut-slide-0 {
+			/*this only works for bg images or custom bgs*/
+			/*for bg classes we'll have to introduce a data api*/
+			background-image: url(http://michal.lukaszewski.eu/themes/lukaszewski/assets/phpers/zxR9AbZ.jpg);
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+<!-- This is a work around / hack to get the user's browser to download the fonts
+ if they decide to save the presentation. -->
+<div style="visibility: hidden; width: 0px; height: 0px">
+<img src="assets/Lato-Bold.woff">
+<img src="assets/HammersmithOne.woff">
+<img src="assets/Droid-Sans-Mono.woff">
+<img src="assets/Gorditas-Regular.woff">
+<img src="assets/FredokaOne-Regular.woff">
+<img src="assets/Ubuntu.woff">
+<img src="assets/Ubuntu-Bold.woff">
+<img src="assets/PressStart2P-Regular.woff">
+<img src="assets/Lato-BoldItalic.woff">
+<img src="assets/AbrilFatface-Regular.woff">
+<img src="assets/Lato-Regular.woff">
+</div>
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div class="bg bg-surf-grad-sky strut-surface">
+<div class="bg innerBg strut-slide-24 bg-surf-grad-sky">
+<div style="position: absolute; transform-origin: left top 0px; transition: all 0ms ease-in-out 0ms; transform-style: preserve-3d; top: 50%; left: 50%; transform: perspective(3000px) scale(0.333333);" id="impress"><div style="position: absolute; transform-origin: left top 0px; transition: all 0ms ease-in-out 0ms; transform-style: preserve-3d; transform: rotateZ(-89.9544deg) rotateY(35.5234deg) rotateX(0deg) translate3d(-86439.3px, -22947.8px, 0px);">
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(2457.6px, 2764.8px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-1" class="step future" data-state="strut-slide-0" data-x="2457.6" data-y="2764.8" data-scale="3">
+			<div class=" slideContainer strut-slide-0" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 49px; left: 13px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 70px;" class="antialias">
+<div align="center"><font color="#eeeeee">How to fix the code</font><br></div><div align="center"><font color="#eeeeee">and don't corrupt the application</font></div>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 699px; left: 43px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/S05TLpd.png">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 691px; left: 96px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 48px;" class="antialias">
+<font color="#eeeeee">/m_lukaszewski</font>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 633px; left: 41px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 48px;" class="antialias">
+<font color="#eeeeee">Michał Łukaszewski<br></font>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 549px; left: 716px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/Picture3.png">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(2307.41px, 6681.6px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-2" class="step future" data-state="strut-slide-1 bg-surf-grad-sky " data-x="2307.4133333333334" data-y="6681.6" data-scale="3">
+<div class="notes">Praca z przestarzałym kodem jest naturalna dla kazdego programisty.<br />
+Niektrzy nawet czynią z tego pasję i specjalizację.
+<br />
+To super, tak długo jeśli ich pasja polega na wycianiu tego kodu do nowocześniejszej lub bardziej optymalnej formy.</div>
+            <div class="bg-solid-black slideContainer strut-slide-1" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 195px; left: 1px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1021px; height: 574.31px;">
+<div class="transformContainer" style="-webkit-transform: scale(0.53, 0.53);
+-moz-transform: scale(0.53, 0.53);
+transform: scale(0.53, 0.53)">
+<img src="assets/9xyXWyz.jpg">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: -10px; left: 101px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 64px;" class="antialias">
+<font color="#eeeeee">When you look into an abyss, <br>the abyss also looks into you.</font>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 152px; left: 694px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 24px;" class="antialias">
+<font color="#eeeeee">Friedrich Nietzsche</font>
+</div>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(8451.41px, 6789.12px, 0px) rotateX(0deg) rotateY(28.6479deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-3" class="step future" data-state="strut-slide-2 bg-surf-grad-sky " data-x="8451.413333333334" data-y="6789.12" data-rotate-y="28.64788975654116" data-scale="3">
+<div class="notes">Jeśli ktos zasiedzi się w takim kodzie zaczyna go bowiem - przez przyzwyczajenie - produkować. <br />
+I to jest bardzo smutne.</div>
+			<div class="bg-solid-black slideContainer strut-slide-2" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: -53px; left: 2px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1024px; height: 821.1px;">
+<div class="transformContainer" style="-webkit-transform: scale(0.63, 0.63);
+-moz-transform: scale(0.63, 0.63);
+transform: scale(0.63, 0.63)">
+<img src="assets/pinkie_sad_face_vector_by_termi92-d4q5ksi.png">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(14759.3px, 6758.4px, 0px) rotateX(0deg) rotateY(79.0682deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-4" class="step future" data-state="strut-slide-3 bg-surf-grad-sky " data-x="14759.253333333334" data-y="6758.4" data-rotate-y="79.0681757280536" data-scale="3">
+<div class="notes">Dlaczego jednak mielibysmy grzebać w starym kodzie, albo usprawniać jakieś działające, ale jednak dinozaury?</div>
+            <div class="bg-solid-black slideContainer strut-slide-3" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 0px; left: -2px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1027px; height: 770.25px;">
+<div class="transformContainer" style="-webkit-transform: scale(0.8, 0.8);
+-moz-transform: scale(0.8, 0.8);
+transform: scale(0.8, 0.8)">
+<img src="assets/O9CzuH1.jpg">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 261px; left: -3px; -webkit-transform: rotate(-1.12rad)  ; -moz-transform: rotate(-1.12rad)  ; transform: rotate(-1.12rad)  ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 115px;" class="antialias">
+<font color="#eeeeee">But why?!<br></font>
+</div>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(8546.99px, 13946.9px, 0px) rotateX(0deg) rotateY(79.0682deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-5" class="step future" data-state="strut-slide-4 bg-surf-grad-sky " data-x="8546.986666666666" data-y="13946.88" data-rotate-y="79.0681757280536" data-scale="3">
+                <div class="notes">Ze wzgledu na wyznawane wartości i zasady dotyczące produkowania dobrej jakości oprogramowania?</div>
+			<div class="bg-solid-black slideContainer strut-slide-4" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 88px; left: -1px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1027px; height: 681.99px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/abwdaNW.jpg">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 3px; left: 369px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 64px;" class="antialias">
+<font color="#eeeeee">worthiness &amp; principles</font>
+</div>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(13721.6px, 13962.2px, 0px) rotateX(0deg) rotateY(79.0682deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-6" class="step future" data-state="strut-slide-5 bg-surf-grad-sky " data-x="13721.6" data-y="13962.24" data-rotate-y="79.0681757280536" data-scale="3">
+                <div class="notes">Bo zmieniło się otoczenie techniczne? <br />
+                Pojawiły się nowe wersje? Szybsze technologie? Lepsze języki?</div>
+			<div class="bg-solid-black slideContainer strut-slide-5" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 80px; left: 1px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/Une9eua.jpg">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 393px; left: 422px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/Y6awhl7.jpg">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 2px; left: 767px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 64px;" class="antialias">
+<font color="#eeeeee">technical</font><br>
+</div>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(19237.5px, 13916.2px, 0px) rotateX(0deg) rotateY(79.0682deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-7" class="step future" data-state="strut-slide-6 bg-surf-grad-sky " data-x="19237.546666666665" data-y="13916.16" data-rotate-y="79.0681757280536" data-scale="3">
+            <div class="notes">Czy jakieś bardzo wazne i niezalezne pomiary wskazały, że nasza aplikacja "przymula"?</div>
+			<div class="bg-solid-black slideContainer strut-slide-6" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 101px; left: 0px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1024px; height: 567.28px;">
+<div class="transformContainer" style="-webkit-transform: scale(1.81, 1.81);
+-moz-transform: scale(1.81, 1.81);
+transform: scale(1.81, 1.81)">
+<img src="assets/15pewm.jpg">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(24016.2px, 18508.8px, 0px) rotateX(67.609deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-8" class="step future" data-state="strut-slide-7 bg-surf-grad-sky " data-x="24016.213333333333" data-y="18508.8" data-rotate-x="67.60901982543713" data-scale="3">
+				<div class="notes">A może chodzi po prostu o kasę?</div>
+			<div class="bg-solid-black slideContainer strut-slide-7" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 1px; left: 2px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/Pnhpqd4.jpg">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(30460.6px, 18447.4px, 0px) rotateX(67.609deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-9" class="step future" data-state="strut-slide-8 bg-surf-grad-sky " data-x="30460.586666666666" data-y="18447.36" data-rotate-x="67.60901982543713" data-scale="3">
+			<div class="notes">Dokładnie tak.</div>
+			<div class="bg-solid-black slideContainer strut-slide-8" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 0px; left: -1px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/a3PSrgk.jpg">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 540px; left: 721px; -webkit-transform: rotate(1.97rad)  ; -moz-transform: rotate(1.97rad)  ; transform: rotate(1.97rad)  ; width: 33.9px; height: 22.31px;">
+<div class="transformContainer" style="-webkit-transform: scale(, );
+-moz-transform: scale(, );
+transform: scale(, )">
+<svg height="22.307059865775233" width="33.90321180417243" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 50 50" preserveAspectRatio="none"><polygon points="25,0 50,50 0,50"></polygon></svg>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 521px; left: 497px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 36px;" class="antialias">
+<font color="#000000">Martin Fowler<br></font>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 12px; left: 215px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 24px;" class="antialias">
+<font color="#eeeeee">"if you use the arguments<br>on the left to justify refactoring, <br>you're screwed."</font>
+</div>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(33041.1px, 7065.6px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-10" class="step future" data-state="strut-slide-9 bg-surf-grad-sky " data-x="33041.066666666666" data-y="7065.6" data-scale="3">
+				<div class="notes">Ok, ale jak rozpoznać, że już czas, aby przepalić trochę kasy i zabrać się za ulepszanie aplikacji, lub przepisanie kodu?</div>
+			<div class="bg-solid-black slideContainer strut-slide-9" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 194px; left: 259px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 506px; height: 380.22px;">
+<div class="transformContainer" style="-webkit-transform: scale(1.45, 1.45);
+-moz-transform: scale(1.45, 1.45);
+transform: scale(1.45, 1.45)">
+<img src="assets/gqSZnb3.gif">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 110px; left: 65px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 48px;" class="antialias">
+<font color="#eeeeee">"I think this code needs to be refactored …"</font>
+</div>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(36645.5px, 9676.8px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-11" class="step future" data-state="strut-slide-10 bg-surf-grad-sky " data-x="36645.54666666667" data-y="9676.8" data-scale="3">
+				<div class="notes">Jak odróżnić faktyczny bałagan</div>
+			<div class="bg-solid-black slideContainer strut-slide-10" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: -2px; left: 2px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/wpid-CAM00038.jpg">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 1px; left: 3px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 64px;" class="antialias">
+<font color="#000000"><b>Mess</b></font>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 51px; left: 151px; -webkit-transform: rotate(2.26rad)  ; -moz-transform: rotate(2.26rad)  ; transform: rotate(2.26rad)  ; width: 87.49px; height: 63.89px;">
+<div class="transformContainer" style="-webkit-transform: scale(, );
+-moz-transform: scale(, );
+transform: scale(, )">
+<svg height="63.893786417852" width="87.49324807911982" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 50 50" preserveAspectRatio="none"><polygon points="25,0 50,50 0,50"></polygon></svg>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(40209.1px, 7050.24px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-12" class="step future" data-state="strut-slide-11 bg-surf-grad-sky " data-x="40209.066666666666" data-y="7050.24" data-scale="3">
+				<div class="notes">Od naturalnej dla danego systemu złożoności?</div>
+			<div class="bg-solid-black slideContainer strut-slide-11" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: -13px; left: -2px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/6838150900_e8f73751cc_o.jpg">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 6px; left: 4px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 64px;" class="antialias">
+<font color="#000000">Complex</font>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 66px; left: 244px; -webkit-transform: rotate(2.23rad)  ; -moz-transform: rotate(2.23rad)  ; transform: rotate(2.23rad)  ; width: 86.13px; height: 57.11px;">
+<div class="transformContainer" style="-webkit-transform: scale(, );
+-moz-transform: scale(, );
+transform: scale(, )">
+<svg height="57.11315054042172" width="86.13003130112865" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 50 50" preserveAspectRatio="none"><polygon points="25,0 50,50 0,50"></polygon></svg>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(44496.2px, 14976px, 0px) rotateX(-2.29183deg) rotateY(41.253deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-13" class="step future" data-state="strut-slide-12 bg-surf-grad-sky " data-x="44496.21333333333" data-y="14976" data-rotate-x="-2.291831180523293" data-rotate-y="41.25296124941927" data-scale="3">
+				<div class="notes">a "zwykłą" złożoność od miejsca gdzie poziom skomplikowania przekroczył już ludzkie pojęcie</div>
+			<div class="bg-solid-black slideContainer strut-slide-12" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 3px; left: -86px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1220px; height: 763.77px;">
+<div class="transformContainer" style="-webkit-transform: scale(1.27, 1.27);
+-moz-transform: scale(1.27, 1.27);
+transform: scale(1.27, 1.27)">
+<img src="assets/Pipes.jpg">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 479px; left: 382px; -webkit-transform: rotate(0.1rad)  ; -moz-transform: rotate(0.1rad)  ; transform: rotate(0.1rad)  ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 96px;" class="antialias">
+<b><font color="#eeeeee">too complex :/</font></b>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 633px; left: 732px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 36px;" class="antialias">
+<font color="#eeeeee">for human being</font>
+</div>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(49329.5px, 15083.5px, 0px) rotateX(0deg) rotateY(-36.6693deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-14" class="step future" data-state="strut-slide-13 bg-surf-grad-sky " data-x="49329.49333333333" data-y="15083.52" data-rotate-y="-36.66929888837269" data-scale="3">
+				<div class="notes">albo po prostu nie ma już w zespole nikogo, kto by pamiętał o co w tym chodzi</div>
+			<div class="bg-solid-black slideContainer strut-slide-13" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 2px; left: 126px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 785px; height: 770.28px;">
+<div class="transformContainer" style="-webkit-transform: scale(1.23, 1.23);
+-moz-transform: scale(1.23, 1.23);
+transform: scale(1.23, 1.23)">
+<img src="assets/willis-earl-beal-nobody-knows.jpg">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(52155.7px, 11366.4px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-15" class="step future" data-state="strut-slide-14 bg-surf-grad-sky " data-x="52155.73333333333" data-y="11366.4" data-scale="3">
+				<div class="notes">No dobra, poszukajmy tych mrocznych miejsc</div>
+			<div class="bg-solid-black slideContainer strut-slide-14" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: -30px; left: -1px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/p360.jpg">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(56169.8px, 10583px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(-10.8862deg) scale(3); transform-style: preserve-3d;" id="step-16" class="step future" data-state="strut-slide-15 bg-surf-grad-sky " data-x="56169.81333333333" data-y="10583.04" data-rotate-z="-10.886198107485642" data-scale="3">
+				<div class="notes">Niestety powszechną praktyką jest poleganie na własnych odczuciach o danym fragmencie aplikacji</div>
+			<div class="bg-solid-black slideContainer strut-slide-15" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 194px; left: 1px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1020px; height: 259.05px;">
+<div class="transformContainer" style="-webkit-transform: scale(1.62, 1.62);
+-moz-transform: scale(1.62, 1.62);
+transform: scale(1.62, 1.62)">
+<img src="assets/ban-i_have_a_bad_feeling_about_this.jpg">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(60279.5px, 8970.24px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(-48.7014deg) scale(3); transform-style: preserve-3d;" id="step-17" class="step future" data-state="strut-slide-16 bg-surf-grad-sky " data-x="60279.46666666667" data-y="8970.24" data-rotate-z="-48.70141258611997" data-scale="3">
+				<div class="notes">A prawda jest taka, że mierzyć musisz ty</div>
+			<div class="bg-solid-black slideContainer strut-slide-16" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: -1px; left: 1px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/Yoda.jpg">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 303px; left: 555px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 66px;" class="antialias">
+<font color="#eeeeee">To measure this,<br>you have.&nbsp; <br></font>
+</div>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(61617.5px, 3548.16px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-18" class="step future" data-state="strut-slide-17 bg-surf-grad-sky " data-x="61617.49333333333" data-y="3548.16" data-scale="3">
+				<div class="notes">Gdyż programowanie, jak każda dziedzina oparta na naukach ścisłych, należącyc do inżynierskich specjalizacji opiera się na wiedzy, nie przeczuciach</div>
+			<div class="bg-solid-black slideContainer strut-slide-17" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 313px; left: -311px; -webkit-transform: rotate(-1.57rad)  ; -moz-transform: rotate(-1.57rad)  ; transform: rotate(-1.57rad)  ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 115px;" class="antialias">
+<font color="#eeeeee">The knowledge</font>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 12px; left: 176px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 76px;" class="antialias">
+<font color="#eeeeee">"Software Engineering <br>is a discipline that should<br>be founded on knowledge <br>and not on believe."</font>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 548px; left: 672px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 48px;" class="antialias">
+<font color="#eeeeee">Markus Sprunck</font>
+</div>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(66641.9px, 3379.2px, 0px) rotateX(0deg) rotateY(-28.6479deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-19" class="step future" data-state="strut-slide-18 bg-surf-grad-sky " data-x="66641.92" data-y="3379.2" data-rotate-y="-28.64788975654116" data-scale="3">
+				<div class="notes">A bolesną dla niektórych prawdą jest to, że przeczucia najcześciej mijają sie z rzeczywistością</div>
+			<div class="bg-solid-black slideContainer strut-slide-18" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 81px; left: 22px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 981px; height: 607.43px;">
+<div class="transformContainer" style="-webkit-transform: scale(1.52, 1.52);
+-moz-transform: scale(1.52, 1.52);
+transform: scale(1.52, 1.52)">
+<img src="assets/IyH7APQ.png">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(70956.4px, 7065.6px, 0px) rotateX(0deg) rotateY(-28.0749deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-20" class="step future" data-state="strut-slide-19 bg-surf-grad-sky " data-x="70956.37333333334" data-y="7065.6" data-rotate-y="-28.07493196141034" data-scale="3">
+				<div class="notes">Micheal Featers<br />
+				główny naukowiec w Obtivia, specjalista od refaktoringu </div>
+			<div class="bg-solid-black slideContainer strut-slide-19" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 87px; left: 0px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/IMG_2643%25201012140735.jpg">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 4px; left: 1px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 64px;" class="antialias">
+<font color="#eeeeee">this guy...<br></font>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 183px; left: 382px; -webkit-transform: rotate(-2.24rad)  ; -moz-transform: rotate(-2.24rad)  ; transform: rotate(-2.24rad)  ; width: 55.56px; height: 37.3px;">
+<div class="transformContainer" style="-webkit-transform: scale(, );
+-moz-transform: scale(, );
+transform: scale(, )">
+<svg height="37.302363381125545" width="55.555188508431804" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 50 50" preserveAspectRatio="none"><polygon points="25,0 50,50 0,50"></polygon></svg>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 151px; left: 436px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 48px;" class="antialias">
+<font color="#eeeeee">Michael Feathers</font>
+</div>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(71884.8px, 11120.6px, 0px) rotateX(-27.502deg) rotateY(-28.0749deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-21" class="step future" data-state="strut-slide-20 bg-surf-grad-sky " data-x="71884.8" data-y="11120.64" data-rotate-x="-27.501974166279513" data-rotate-y="-28.07493196141034" data-scale="3">
+				<div class="notes">5 lat temu napisał ciekawy artykuł o praktycznym podejściu do refaktoringyu
+					<br />
+					Zauważył, że pliki czy obszary aplikacji możemy podzielić na szybko zmienne i wolnozmienne
+				</div>
+			<div class="bg-solid-black slideContainer strut-slide-20" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 0px; left: 0px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/j6sUJ4f.png">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 353px; left: 468px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 558px; height: 414.85px;">
+<div class="transformContainer" style="-webkit-transform: scale(0.91, 0.91);
+-moz-transform: scale(0.91, 0.91);
+transform: scale(0.91, 0.91)">
+<img src="assets/XDD16679imagelistfilename1.jpg">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(73687px, 15298.6px, 0px) rotateX(-65.3172deg) rotateY(-28.0749deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-22" class="step future" data-state="strut-slide-21 bg-surf-grad-sky " data-x="73687.04" data-y="15298.56" data-rotate-x="-65.31718864491384" data-rotate-y="-28.07493196141034" data-scale="3">
+				<div class="notes">A ponieważ każdy kawałek kodu w nich zawarty możemy podzielić wg jakości kodu, mierzonej na przykład złożonością cyklomatyczną powstaje ciekawy rozkład</div>
+			<div class="bg-solid-black slideContainer strut-slide-21" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 136px; left: 2px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1021px; height: 631.32px;">
+<div class="transformContainer" style="-webkit-transform: scale(1.7, 1.7);
+-moz-transform: scale(1.7, 1.7);
+transform: scale(1.7, 1.7)">
+<img src="assets/churn_max_complexity_chart1.png">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(75707.7px, 19507.2px, 0px) rotateX(-105.424deg) rotateY(-28.0749deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-23" class="step future" data-state="strut-slide-22 bg-surf-grad-sky " data-x="75707.73333333334" data-y="19507.2" data-rotate-x="-105.42423430407148" data-rotate-y="-28.07493196141034" data-scale="3">
+				<div class="notes">Nazywany dzisiaj potocznie kwadratem Featersa
+					<br />
+					Wprowadza on bardzo ciekawy podział aplikacji ułatwiając podejmowanie decyzji o miejscu, w którym należy rozpocząć poprawianie aplikacji.
+					<br />
+					Narzędzia, brzydkie-stabilne, małe, szybko zmienne ale stabilne i miejsca gdzie my, jako zespół, popłynęliśmy w nawarstwiające się pokłady... błedów projektowych.
+				</div>
+			<div class="bg-solid-black slideContainer strut-slide-22" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 0px; left: 1px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1027px; height: 771.29px;">
+<div class="transformContainer" style="-webkit-transform: scale(2.08, 2.08);
+-moz-transform: scale(2.08, 2.08);
+transform: scale(2.08, 2.08)">
+<img src="assets/churn2.png">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(81633.3px, 23147.5px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(89.9544deg) scale(3); transform-style: preserve-3d;" id="step-24" class="step future" data-state="strut-slide-23 bg-surf-grad-sky " data-x="81633.28" data-y="23147.52" data-rotate-z="89.95437383553926" data-scale="3">
+				<div class="notes">Oczywiście analiza statyczna daje nam więcej informoacji niźli tylko o złożoności.
+					<br />
+					Mamy do dyspozycji np mess detector czy copy-paste detector i ten ostatni dostarcza informacji o błędach projektowych naruszających zasadę DYI.
+				</div>
+			<div class="bg-solid-black slideContainer strut-slide-23" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 51px; left: 193px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 668px; height: 668px;">
+<div class="transformContainer" style="-webkit-transform: scale(1.91, 1.91);
+-moz-transform: scale(1.91, 1.91);
+transform: scale(1.91, 1.91)">
+<img src="assets/DontRepeatYourself.jpg">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(86439.3px, 22947.8px, 0px) rotateX(0deg) rotateY(-35.5234deg) rotateZ(89.9544deg) scale(3); transform-style: preserve-3d;" id="step-25" class="step active present" data-state="strut-slide-24 bg-surf-grad-sky " data-x="86439.25333333333" data-y="22947.84" data-rotate-y="-35.523383298111035" data-rotate-z="89.95437383553926" data-scale="3">
+				<div class="notes">Przedstawiam Wam Krzysztofa</div>
+			<div class="bg-solid-black slideContainer strut-slide-24" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 129px; left: 0px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/toch_1340319082_23.jpg">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 117px; left: 74px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 48px;" class="antialias">
+<font color="#eeeeee">Christophe Philemotte</font>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 150px; left: 552px; -webkit-transform: rotate(2.32rad)  ; -moz-transform: rotate(2.32rad)  ; transform: rotate(2.32rad)  ; width: 53.41px; height: 39.23px;">
+<div class="transformContainer" style="-webkit-transform: scale(, );
+-moz-transform: scale(, );
+transform: scale(, )">
+<svg height="39.2321000191054" width="53.4130069229562" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 50 50" preserveAspectRatio="none"><polygon points="25,0 50,50 0,50"></polygon></svg>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(90658.1px, 22978.6px, 0px) rotateX(0deg) rotateY(-90.5273deg) rotateZ(89.9544deg) scale(3); transform-style: preserve-3d;" id="step-26" class="step future" data-state="strut-slide-25 bg-surf-grad-sky " data-x="90658.13333333333" data-y="22978.56" data-rotate-y="-90.52733163067008" data-rotate-z="89.95437383553926" data-scale="3">
+				<div class="notes">Krzysztof dwa lata temu opublikował artykul w którym rozważał, w jakim momencie nasz kod jest wystarczają unikalny.
+				<br />
+				Zwrócił uwagę, że tak naprawdę nie chodzi o to, żeby za wszelką cenę walczyć o to by każdy bit kodu był unikalny w skali aplikacji.
+				<br />
+				Wg niego DRY odnosi się do nie replikowania konceptów domenowych. (a to pośrednio czyni kod unikalnym). To przeniesienie problemu DRY na warstwę architektury i projektanta bezpośrednio wpływa na to jak tworzymy naszą aplikację.</div>
+				
+			<div class="bg-solid-black slideContainer strut-slide-25" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 3px; left: 0px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1024px; height: 435.51px;">
+<div class="transformContainer" style="-webkit-transform: scale(1.38, 1.38);
+-moz-transform: scale(1.38, 1.38);
+transform: scale(1.38, 1.38)">
+<img src="assets/7uEQVA3.png">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 458px; left: 57px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 48px;" class="antialias">
+<font color="#eeeeee"><b>DRY is not about identical chunks of bits or <br>characters in different places.</b></font> <br>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 572px; left: 58px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 78px;" class="antialias">
+<div align="center"><b><font color="#ff0000">DRY aims at not repeating </font><br><font color="#ff0000">domain concepts.</font></b></div>
+</div>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(95300.3px, 22963.2px, 0px) rotateX(0deg) rotateY(210.276deg) rotateZ(89.9544deg) scale(3); transform-style: preserve-3d;" id="step-27" class="step future" data-state="strut-slide-26 bg-surf-grad-sky " data-x="95300.26666666666" data-y="22963.2" data-rotate-y="210.27551081301215" data-rotate-z="89.95437383553926" data-scale="3">
+				<div class="notes">Ok, ale analiza statyczna to nie wszystko na co nas stać.
+				<br />
+				Jednym z najczęściej pomijanych metod, która potrafi dostarcza niezwykle ważnych informacji z czysto biznesowego punktu widzenia jest profilowanie.
+				<br />
+				PRofilowanie pokazuje jak płyną dane w aplikacji, które jej części są najbardziej obciążane obsługą danej komendy i gdzie _sumarycznie_ idzie najwięcej zasobów.
+				<br />
+				Jest to metoda trudna i wymagająca wiedzy, ale przede wszystkim uczciwości w przygotowaniu i przeprowadzaniu pomiarów. Oraz interpretacji wyników.
+				<br />
+				Dlaczego to ważna biznesowo informacje? Bo uczciwie przeprowadzone daje informacje nt czasów reakcji aplikacji, zasobów koniecznych potrzebnych do zachowania budżetu wydajnościowego oraz pozwala prognozować dalsze inwestycje w sprzęt i optymalizacje kodu</div>
+				
+			<div class="bg-solid-black slideContainer strut-slide-26" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 4px; left: 4px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/Picture4.jpg">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 91px; left: 445px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/Picture5.png">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 449px; left: 447px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/Picture6.png">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(90849.3px, 9507.84px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-28" class="step future" data-state="strut-slide-27 bg-surf-grad-sky " data-x="90849.28" data-y="9507.84" data-scale="3">
+				<div class="notes">Najgorsze co można zrobić to zacząc optymalizować nie gotowy kod. Bez pomiarów i wiedzy o całościowym zachowaniu aplikacji.
+					<Br />
+					Niejeden budżet został spalony przez takie zachowanie.
+				</div>
+			<div class="bg-solid-black slideContainer strut-slide-27" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 1px; left: 2px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1021px; height: 766.55px;">
+<div class="transformContainer" style="-webkit-transform: scale(1.6, 1.6);
+-moz-transform: scale(1.6, 1.6);
+transform: scale(1.6, 1.6)">
+<img src="assets/seleniumcamp-2015-andrii-soldatenko-32-638.jpg">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(95723.5px, 8924.16px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-29" class="step future" data-state="strut-slide-28 bg-surf-grad-sky " data-x="95723.52" data-y="8924.16" data-scale="3">
+				<div class="notes">Innym problemem jest regresja, czyli wprowadzanie nowych błędów w czasie poprawiania poprzednich
+					<br />
+					Niestety nawet TDD czy BDD nie są w stanie uchronic nas w 100%, ale też bez nich możemy w zasadzie mieć pewność, że na taki problem się natkniemy.
+				</div>
+			<div class="bg-solid-black slideContainer strut-slide-28" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 136px; left: 65px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 895px; height: 545.39px;">
+<div class="transformContainer" style="-webkit-transform: scale(2.8, 2.8);
+-moz-transform: scale(2.8, 2.8);
+transform: scale(2.8, 2.8)">
+<img src="assets/regression-testing.jpg">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(100256px, 8432.64px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-30" class="step future" data-state="strut-slide-29 bg-surf-grad-sky " data-x="100256.42666666667" data-y="8432.64" data-scale="3">
+				<div class="notes">Wreszcie - overengineering.</div>
+			<div class="bg-solid-black slideContainer strut-slide-29" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 0px; left: 0px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1025px; height: 767.96px;">
+<div class="transformContainer" style="-webkit-transform: scale(1.05, 1.05);
+-moz-transform: scale(1.05, 1.05);
+transform: scale(1.05, 1.05)">
+<img src="assets/Picture2.jpg">
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 735px; left: 59px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 16px;" class="antialias">
+<font color="#eeeeee">https://twitter.com/ziobrando/status/741186560373186560<br><br></font>
+</div>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(98085.5px, 13363.2px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(179.909deg) scale(3); transform-style: preserve-3d;" id="step-31" class="step future" data-state="strut-slide-30 bg-surf-grad-sky " data-x="98085.54666666666" data-y="13363.2" data-rotate-z="179.90874767107852" data-scale="3">
+				<div class="notes">Cała sztuczka, ogólna zasada z wprowadzaniem zmian w procesie refaktoryzacji czy optymalizacji to... szukanie prostoty.
+					<br />
+					Rozplątywanie bałaganu i szukanie w nim prawdy może być niezwykłą przygodą
+				</div>
+			<div class="bg-solid-black slideContainer strut-slide-30" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 95px; left: 3px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1023px; height: 672.62px;">
+<div class="transformContainer" style="-webkit-transform: scale(1.28, 1.28);
+-moz-transform: scale(1.28, 1.28);
+transform: scale(1.28, 1.28)">
+<img src="assets/Simplify.jpg">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(102728px, 13440px, 0px) rotateX(0deg) rotateY(-19.4806deg) rotateZ(179.909deg) scale(3); transform-style: preserve-3d;" id="step-32" class="step future" data-state="strut-slide-31 bg-surf-grad-sky " data-x="102727.68" data-y="13440" data-rotate-y="-19.48056503444799" data-rotate-z="179.90874767107852" data-scale="3">
+				<div class="notes">Dekompozycja, bo duży obrazek klamie</div>
+			<div class="bg-solid-black slideContainer strut-slide-31" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 201px; left: 4px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1017px; height: 567.82px;">
+<div class="transformContainer" style="-webkit-transform: scale(2.12, 2.12);
+-moz-transform: scale(2.12, 2.12);
+transform: scale(2.12, 2.12)">
+<img src="assets/03fig53.gif">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(107738px, 13332.5px, 0px) rotateX(0deg) rotateY(-69.9008deg) rotateZ(179.909deg) scale(3); transform-style: preserve-3d;" id="step-33" class="step future" data-state="strut-slide-32 bg-surf-grad-sky " data-x="107738.45333333334" data-y="13332.48" data-rotate-y="-69.90085100596043" data-rotate-z="179.90874767107852" data-scale="3">
+					<div class="notes">Zasada 8 godzin</div>
+			<div class="bg-solid-black slideContainer strut-slide-32" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: -235px; left: -19px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 964px;" class="antialias">
+<font color="#eaff00">8</font><br>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: -15px; left: 485px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 154px;" class="antialias">
+<b><font color="#ff0000">HOURS</font></b>
+</div>
+</div>
+</div>
+
+			<div class="componentContainer " style="top: 591px; left: 835px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<div style="font-size: 88px;" class="antialias">
+<font color="#eeeeee">Rule</font>
+</div>
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(109022px, 18708.5px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(135.218deg) scale(3); transform-style: preserve-3d;" id="step-34" class="step future" data-state="strut-slide-33 bg-surf-grad-sky " data-x="109021.86666666667" data-y="18708.48" data-rotate-z="135.21803965087426" data-scale="3">
+				<div class="notes">Nawet jeśli czasami patrzysz na kod i masz... nieuprzejme myśli o autorze</div>
+			<div class="bg-solid-black slideContainer strut-slide-33" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 0px; left: 0px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1027px; height: 770.25px;">
+<div class="transformContainer" style="-webkit-transform: scale(2.05, 2.05);
+-moz-transform: scale(2.05, 2.05);
+transform: scale(2.05, 2.05)">
+<img src="assets/giphy.gif">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(109213px, 23439.4px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(89.9544deg) scale(3); transform-style: preserve-3d;" id="step-35" class="step future" data-state="strut-slide-34 bg-surf-grad-sky " data-x="109213.01333333334" data-y="23439.36" data-rotate-z="89.95437383553926" data-scale="3">
+				<div class="notes">Nawet jeśli czasami człowiek popełni błąd i zaliczy glebę to najważniejsze jest aby się podnieść, wyciągnać wnioski i więcej tego samego błędu nie popełniać.</div>
+			<div class="bg-solid-black slideContainer strut-slide-34" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 238px; left: -1px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: 1026px; height: 292.95px;">
+<div class="transformContainer" style="-webkit-transform: scale(1.33, 1.33);
+-moz-transform: scale(1.33, 1.33);
+transform: scale(1.33, 1.33)">
+<img src="assets/hBgznm7.gif">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+
+			<div style="position: absolute; transform: translate(-50%, -50%) translate3d(103642px, 23654.4px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(3); transform-style: preserve-3d;" id="step-36" class="step future" data-state="strut-slide-35 bg-surf-grad-sky " data-x="103642.45333333334" data-y="23654.4" data-scale="3">
+				<div class="notes">Dlatego - keep calm and fix the code :)</div>
+			<div class="bg-solid-black slideContainer strut-slide-35" style="width: 1024px; height: 768px;">
+			<div class="themedArea">
+
+			</div>
+
+			<div class="componentContainer " style="top: 34px; left: 220px; -webkit-transform:   ; -moz-transform:   ; transform:   ; width: px; height: px;">
+<div class="transformContainer" style="-webkit-transform: scale(1, 1);
+-moz-transform: scale(1, 1);
+transform: scale(1, 1)">
+<img src="assets/40CfwOj.png">
+</div>
+</div>
+
+			</div>
+
+		</div>
+
+	<div style="position: absolute; transform: translate(-50%, -50%) translate3d(55760.2px, 13209.6px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(9); transform-style: preserve-3d;" id="overview" class="step future" data-state="strut-slide-overview" data-x="55760.21333333333" data-y="13209.6" data-scale="9"></div>
+
+</div></div>
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+</div>
+</div></body></html>
